@@ -3,7 +3,7 @@ import { Field, Form, Formik, useField } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-
+import './students.css';
 
 const CustomTextInput = ({label,...props}) =>{
  
@@ -13,9 +13,9 @@ const CustomTextInput = ({label,...props}) =>{
    <label htmlFor = {props.id || props.name}>{label}</label>
    <input className="text-input" {...field} {...props}/>
    {meta.touched && meta.error ? (
-     <div className = "error">
+     <h5 className = "error">
        {meta.error}
-     </div>):null
+     </h5>):null
    }
  </React.Fragment>   
 )}
@@ -24,7 +24,7 @@ class addStudents extends React.Component{
 
     render(){
         return(
-          <div className="form-group">
+          <React.Fragment className="form-group">
             <Formik
             initialValues={{
               rollNo:"",
@@ -60,7 +60,7 @@ class addStudents extends React.Component{
                   </Form>
                 )}
             </Formik>
-          </div>
+          </React.Fragment>
         )
     }
 }
