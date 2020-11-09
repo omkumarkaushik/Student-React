@@ -10,7 +10,7 @@ const CustomTextInput = ({label,...props}) =>{
   const [field,meta] = useField(props);
  return(
  <React.Fragment>
-   <label htmlFor = {props.id || props.name}>{label}</label>
+   <label style={{fontWeight:'bold'}} htmlFor = {props.id || props.name}>{label}:</label><br/>
    <input className="text-input" {...field} {...props}/>
    {meta.touched && meta.error ? (
      <h5 className = "error">
@@ -49,7 +49,7 @@ class addStudents extends React.Component{
             >
                 {(props)=>(
                   <Form>
-                    <h1>Add Student</h1>
+                    <h2 style={{color:'coral'}}>Add Student</h2>
                     <CustomTextInput label="Roll Number" name ="rollNo" type="text" placeholder="Your Roll Number"/><br/>
                     <CustomTextInput label="Name" name ="name" type="text" placeholder="Your Name"/><br/>
                     <CustomTextInput label="Your Description" name ="desc" type="text" placeholder="Your Description"/><br/>
