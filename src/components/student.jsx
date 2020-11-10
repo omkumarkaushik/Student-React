@@ -14,6 +14,7 @@ class student extends React.Component{
         this.fetchEmployee();
     }
 
+
     fetchEmployee(){
         Axios.get("http://localhost:9090/students")
         .then(Response=>{this.setState({
@@ -29,8 +30,8 @@ class student extends React.Component{
               <div className="col-8 offset-2">
                 <h3>Student Data:</h3>
                 <br />
-                <div className="search" style={{marginBottom:"40px"}}>
-                  {/* <input type="text" className="search-text" onChange={(e)=>this.setState({search:e.target.value})}/> */}
+                <div style={{marginBottom:"40px"}}>
+                  <button type="btn btn-success" onClick={()=>{downloadFile("http://localhost:9090/downloadExcel/student.xlsx")}}>Download Excel</button>
                 </div>
                 {result ? <Table list={result} /> : null}
               </div>
@@ -47,6 +48,15 @@ const handleRemoval=(itemId)=>{
     window.location.reload(false);
   })
 }
+
+const downloadFile=(absoluteUrl)=> {
+  var link = document.createElement('a');
+  link.href = absoluteUrl;
+  link.download = 'true';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 const Table = ({ list }) => (
     
