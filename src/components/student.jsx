@@ -31,7 +31,7 @@ class student extends React.Component{
                 <h3>Student Data:</h3>
                 <br />
                 <div style={{marginBottom:"40px"}}>
-                  <button type="btn btn-success" onClick={()=>{downloadFile("http://localhost:9090/downloadExcel/student.xlsx")}}>Download Excel</button>
+                  <button disabled={result.length===0} type="btn btn-success" onClick={()=>{downloadFile("http://localhost:9090/downloadExcel/student.xlsx")}}>Download Excel</button>
                 </div>
                 {result ? <Table list={result} /> : null}
               </div>
@@ -70,6 +70,7 @@ const Table = ({ list }) => (
           <th>Language Marks</th>
           <th>Social Science Marks</th>
           <th>Student Percentage</th>
+          <th>Grade</th>
         </tr>
       </thead>
       <tbody>
@@ -95,6 +96,9 @@ const Table = ({ list }) => (
             </td>
             <td>
               <span>{item.perc}</span>
+            </td>
+            <td>
+              <span>{item.grade}</span>
             </td>
             <td><button className="btn btn-danger" onClick={()=>{handleRemoval(item.rollNo)}}>Remove</button></td>
           </tr>
